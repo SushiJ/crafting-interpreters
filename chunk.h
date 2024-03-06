@@ -2,7 +2,6 @@
 #define clox_chunk_h
 
 #include "common.h"
-#include <stdint.h>
 
 typedef enum { OP_RETURN } opCode;
 
@@ -15,5 +14,7 @@ typedef struct {
 void init_chunk(Chunk *chunk);
 
 void write_chunk(Chunk *chunk, uint8_t byte);
+
+void free_chunk(Chunk *chunk);
 
 #endif
