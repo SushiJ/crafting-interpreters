@@ -2,11 +2,7 @@
 
 #include "debug.h"
 
-static int simple_instruction(const char *name, int offset) {
-    printf("%s\n", name);
-
-    return offset + 1;
-}
+static int simple_instruction(const char *name, int offset);
 
 void disassemble_chunk(Chunk *chunk, const char *name) {
     printf("-- %s --\n", name);
@@ -27,4 +23,10 @@ int disassemble_instruction(Chunk *chunk, int offset) {
         printf("UNKNOWN OP_CODE %d\n", instruction);
         return offset + 1;
     }
+}
+
+static int simple_instruction(const char *name, int offset) {
+    printf("%s\n", name);
+
+    return offset + 1;
 }
