@@ -10,7 +10,7 @@ OBJ_FILES = $(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%.o,$(SRC_FILES))
 
 TARGET = compiler
 
-all: $(TARGET)
+default: $(TARGET)
 
 $(TARGET): $(OBJ_FILES)
 	$(CC) $(CFLAGS) -o $@ $^
