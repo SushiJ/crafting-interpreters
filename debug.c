@@ -41,7 +41,7 @@ int disassemble_instruction(Chunk *chunk, int offset) {
 static int constant_intruction(const char *name, Chunk *chunk, int offset) {
 
     uint8_t constant = chunk->code[offset + 1];
-    printf("%-16s %4d", name, constant);
+    printf("%-16s %4d '", name, constant);
 
     print_value(chunk->constants.values[constant]);
 
