@@ -36,6 +36,6 @@ void free_chunk(Chunk *chunk);
 
 int add_constants(Chunk *chunk, Value value);
 
-int get_line(Chunk *chunk, int idx);
+int get_line(Lines_array *lines, int idx);
 
 #endif

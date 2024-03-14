@@ -1,12 +1,14 @@
-#include <stdio.h>
-
-#include "chunk.h"
 #include "debug.h"
+#include "chunk.h"
 #include "value.h"
+#include <stdio.h>
 
 static int simple_instruction(const char *name, int offset);
 
 static int constant_intruction(const char *name, Chunk *chunk, int offset);
+
+// TODO: figure this out
+int get_line(Lines_array *lines, int idx) {}
 
 void disassemble_chunk(Chunk *chunk, const char *name) {
     printf("-- %s --\n", name);
@@ -19,11 +21,13 @@ void disassemble_chunk(Chunk *chunk, const char *name) {
 int disassemble_instruction(Chunk *chunk, int offset) {
     printf("%04d ", offset);
 
-    if (offset > 0 && chunk->lines[offset] == chunk->lines[offset - 1]) {
+    int line = get_line(chunk->lines, offset);
+    if (offset > 0 && line == get_line(chunk->lines, offset - 1)) {
         printf("  | ");
     } else {
-        printf("%4d ", chunk->lines[offset]);
+        printf("%4d ", line);
     }
+
     uint8_t instruction = chunk->code[offset];
     switch (instruction) {
     case OP_CONSTANT:
